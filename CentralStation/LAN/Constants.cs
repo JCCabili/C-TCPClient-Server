@@ -1,0 +1,32 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CentralStation.LAN
+{
+    public static class Constants
+    {
+        public static byte[] TERMINALSTATUS = { 0xC, 0x17, 0x5C, 0x0 };
+
+
+        public static byte[] OUTOFSERVICE = { 0xC, 0x17, 0x5C, 0x1 };
+        public static byte[] INSERVICE = { 0xC, 0x17, 0x5C, 0x2 };
+        public static byte[] OFFLINE = { 0xC, 0x17, 0x5C, 0x3 };
+        public static byte[] ONLINE = { 0xC, 0x17, 0x5C, 0x04 };
+        public static byte[] MAINTENANCE = { 0xC, 0x17, 0x5C, 0x05 };
+
+
+        public static byte[] TERMINALCOMMAND = { 0xC, 0x17, 0x5C, 0xB };
+
+        public static byte[] CSHUTDOWN = { 0xC, 0x17, 0x5C, 0xB , 0x01 };
+        public static byte[] CRESTART = { 0xC, 0x17, 0x5C, 0xB, 0x02 };
+        public static byte[] COUTOFSERVICE = { 0xC, 0x17, 0x5C, 0xB, 0x03 };
+        public static byte[] CMAINTENANCE = { 0xC, 0x17, 0x5C, 0xB, 0x04 };
+        public static byte[] CINSERVICE = { 0xC, 0x17, 0x5C, 0xB, 0x05 };
+
+        public static byte[] CIGNORE = { 0xC, 0x17, 0x5C, 0xC };
+        public static byte[] CRECEIVE = { 0xC, 0x17, 0x5C, 0xD };
+    }
+}

@@ -5,47 +5,58 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace SC.LAN
+namespace CentralStation.LAN.Terminal
 {
-    delegate void RunControllerProcess(StationComputerEventArgs args);
+    delegate void RunControllerProcess(TerminalEventArgs args);
 
-    public class StationComputerEventArgs : EventArgs
+    public class TerminalEventArgs : EventArgs
     {
-        public Response Response { get; set; }
-        public StationComputerEventArgs(Response response)
+        public ResponseTerminal Response { get; set; }
+        public TerminalEventArgs(ResponseTerminal response)
         {
             Response = response;
         }
 
     }
 
-    public delegate void TerminalEventHandler(object sender, StationComputerEventArgs e);
+    public delegate void TerminalEventHandler(object sender, TerminalEventArgs e);
 
-    public class StationComputerBase
+    public delegate void CommandsEventHandler(object sender, TerminalEventArgs e);
+
+    public class TerminalBase
     {
         private Thread workerThread;
         public event TerminalEventHandler TerminalStateChange = null;
-     
+        public event CommandsEventHandler CentralCommand = null;
 
-        protected void OnTerminalStateChange(StationComputerEventArgs e)
+        protected void OnTerminalStateChange(TerminalEventArgs e)
         {
             if (this.TerminalStateChange != null)
                 this.TerminalStateChange(this, e);
         }
 
 
+        protected void OnRecieveCommand(TerminalEventArgs e)
+        {
+            if (this.CentralCommand != null)
+                this.CentralCommand(this, e);
+        }
+
 
         public eState CurrentState { get; set; }
+        public eCentralCommand eCommands { get; set; }
 
 
-        StationComputerClient client;
+        TerminalClient client;
         public void Do_Work()
         {
 
 
-            client = new StationComputerClient();
+            client = new TerminalClient();
 
             CurrentState = eState.Offline;
+            eCommands = eCentralCommand.Idle;
+
 
             if (client.Open())
             {
@@ -60,14 +71,21 @@ namespace SC.LAN
                         if (CurrentState != client.Response.ResponseState)
                         {
                             CurrentState = client.Response.ResponseState;
-                            OnTerminalStateChange(new StationComputerEventArgs(client.Response));
+                            OnTerminalStateChange(new TerminalEventArgs(client.Response));
                         }
+
+                        if (eCommands != client.Response.CentralCommand)
+                        {
+                            eCommands = client.Response.CentralCommand;
+                            OnRecieveCommand(new TerminalEventArgs(client.Response));
+                        }
+
                     }
                 }
             }
 
-          
-            
+
+
         }
 
 
@@ -92,6 +110,7 @@ namespace SC.LAN
         private volatile bool _shouldStop;
 
 
-       
     }
+
+
 }

@@ -1,0 +1,11 @@
+D:\Dell\Documents\Visual Studio 2017\Projects\SC\CentralStation\bin\Debug\CentralStation.exe.config
+D:\Dell\Documents\Visual Studio 2017\Projects\SC\CentralStation\bin\Debug\CentralStation.exe
+D:\Dell\Documents\Visual Studio 2017\Projects\SC\CentralStation\bin\Debug\CentralStation.pdb
+D:\Dell\Documents\Visual Studio 2017\Projects\SC\CentralStation\obj\Debug\CentralStation.csprojResolveAssemblyReference.cache
+D:\Dell\Documents\Visual Studio 2017\Projects\SC\CentralStation\obj\Debug\CentralStation.CentralStaion.resources
+D:\Dell\Documents\Visual Studio 2017\Projects\SC\CentralStation\obj\Debug\CentralStation.Properties.Resources.resources
+D:\Dell\Documents\Visual Studio 2017\Projects\SC\CentralStation\obj\Debug\CentralStation.csproj.GenerateResource.Cache
+D:\Dell\Documents\Visual Studio 2017\Projects\SC\CentralStation\obj\Debug\CentralStation.csproj.CoreCompileInputs.cache
+D:\Dell\Documents\Visual Studio 2017\Projects\SC\CentralStation\obj\Debug\CentralStation.exe
+D:\Dell\Documents\Visual Studio 2017\Projects\SC\CentralStation\obj\Debug\CentralStation.pdb
+D:\Dell\Documents\Visual Studio 2017\Projects\SC\CentralStation\obj\Debug\CentralStation.TerminalForm.resources

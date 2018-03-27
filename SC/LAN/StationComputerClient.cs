@@ -66,12 +66,12 @@ namespace SC.LAN
 
 
                     Debug.WriteLine("Recieved:" + data);
-                    stream.Write(Constants.RECEIVE,0, Constants.RECEIVE.Length);
+                   
                     
 
 
-                    byte[] state = new byte[2];
-                     Array.Copy(bytes, state, 2);
+                    byte[] state = new byte[4];
+                     Array.Copy(bytes, state, 4);
 
 
                     if (state.SequenceEqual(Constants.INSERVICE))
@@ -84,6 +84,8 @@ namespace SC.LAN
                         Response.ResponseState = eState.Online;
                     else if (state.SequenceEqual(Constants.OUTOFSERVICE))
                         Response.ResponseState = eState.OutofService;
+                    else if (state.SequenceEqual(Constants.TERMINALSTATUS))
+                        stream.Write(Constants.TERMINALSTATUS, 0, Constants.TERMINALSTATUS.Length);
                     else
                         Response.ResponseState = eState.Invalid;
 

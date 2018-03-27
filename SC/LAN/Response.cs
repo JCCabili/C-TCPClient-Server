@@ -24,7 +24,7 @@ namespace SC.LAN
         public eState ResponseState
         {
             get { return _responseState; }
-          
+            set { _responseState = value; }
         }
 
         public Response(byte[] responseParam)

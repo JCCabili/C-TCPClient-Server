@@ -56,7 +56,7 @@ namespace SC
 
         public void DisplayResponse(StationComputerEventArgs args)
         {
-            txtRecieve.Text = string.Format("{1} \n {0}", txtRecieve.Text, args.Response.ToString());
+            txtRecieve.Text = string.Format("{1} \n {0}", txtRecieve.Text, args.Response.ResponseState.ToString());
         }
 
 
